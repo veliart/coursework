@@ -1,4 +1,4 @@
-package com.example.coursework.service.impl.repository.impl;
+package com.example.coursework.repository.impl;
 
 import com.example.coursework.model.Question;
 import com.example.coursework.repository.impl.JavaQuestionRepositoryImpl;

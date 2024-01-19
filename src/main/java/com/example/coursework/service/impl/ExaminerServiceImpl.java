@@ -29,16 +29,14 @@ public class ExaminerServiceImpl implements ExaminerService {
 
     @Override
     public Collection<Question> getQuestions(int amount) {
-
         int allSubjectQuestionsSize = javaQuestionRepository.getAll().size() + mathQuestionRepository.getAll().size(); // общее количество вопросов по двум темам
         if (allSubjectQuestionsSize < amount) {
             throw new InvalidAmountQuestionException("Количество вопросов в задании превышает количество вопросов в базе данных.");
         }
         int amountJavaQuestion = random.nextInt(amount + 1); // Получаем общее количество вопросов по Java, +1 - чтобы не исключить возможность вопросов ТОЛЬКО по джава
-        if (amountJavaQuestion > javaQuestionRepository.getAll().size()) {
+        if (amountJavaQuestion > javaQuestionRepository.getAll().size()) { // проверка, что количество вопросов по Java не превышает количество в репозитории. По математике не делаем, так как проверили сумму
             amountJavaQuestion = javaQuestionRepository.getAll().size();
         }
-        int amountMathQuestion = amount - amountJavaQuestion;
         Set<Question> examQuestions= new HashSet<>();
         while (examQuestions.size() < amountJavaQuestion) {
             examQuestions.add(javaQuestionService.getRandomQuestion());
