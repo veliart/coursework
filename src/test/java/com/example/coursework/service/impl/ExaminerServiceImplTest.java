@@ -42,34 +42,34 @@ public class ExaminerServiceImplTest {
                 examinerService.getQuestions(amount));
     }
 
-//    @Test
-//    public void shouldGetQuestionsIsCorrect() {
-//        //given
-//        int amount = 2;
-//        List<Question> questions = List.of(
-//                new Question("Question1", "Answer1"),
-//                new Question("Question2", "Answer2"),
-//                new Question("Question3", "Answer3"),
-//                new Question("Question4", "Answer4"),
-//                new Question("Question5", "Answer5")
-//
-//        );
-//        //when
+    @Test
+    public void shouldGetQuestionsIsCorrect() {
+        //given
+        int amount = 2;
+        List<Question> questions = List.of(
+                new Question("Question1", "Answer1"),
+                new Question("Question2", "Answer2"),
+                new Question("Question3", "Answer3"),
+                new Question("Question4", "Answer4"),
+                new Question("Question5", "Answer5")
 
-//        when(javaQuestionRepository.getAll().size()).thenReturn(5);
-//        when(mathQuestionRepository.getAll().size()).thenReturn(5);
-//        when(javaQuestionService.getRandomQuestion()).thenReturn(
-//                questions.get(0)
-//        );
-//        when(mathQuestionService.getRandomQuestion()).thenReturn(
-//                questions.get(1)
-//        );
-//        Collection<Question> actualQuestion = examinerService.getQuestions(amount);
-//        //then
-//        Assertions.assertEquals(
-//                Set.of(questions.get(0), questions.get(1)),
-//                actualQuestion
-//        );
-//    }
+        );
+        //when
+
+        when(javaQuestionService.getSizeQuestionRepository()).thenReturn(10);
+        when(mathQuestionService.getSizeQuestionRepository()).thenReturn(10);
+        when(javaQuestionService.getRandomQuestion()).thenReturn(
+                questions.get(0)
+        );
+        when(mathQuestionService.getRandomQuestion()).thenReturn(
+                questions.get(1)
+        );
+        Collection<Question> actualQuestion = examinerService.getQuestions(amount);
+        //then
+        Assertions.assertEquals(
+                Set.of(questions.get(0), questions.get(1)),
+                actualQuestion
+        );
+    }
 
 }

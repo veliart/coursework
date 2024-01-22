@@ -15,10 +15,14 @@ public class JavaQuestionServiceImpl implements QuestionService {
     public JavaQuestionServiceImpl(JavaQuestionRepositoryImpl javaQuestionRepository) {
         this.javaQuestionRepository = javaQuestionRepository;
     }
+    public int getSizeQuestionRepository() {
+        int sizeOfJavaQuestionRepository = javaQuestionRepository.getAll().size();
+        return sizeOfJavaQuestionRepository;
+    }
 
     @Override
     public Question getRandomQuestion() {
-        int randomIndex = random.nextInt(javaQuestionRepository.getAll().size()); // результат nextInt < question.size
+        int randomIndex = random.nextInt(getSizeQuestionRepository()); // результат nextInt < question.size
         ArrayList<Question> arrayQuestions = new ArrayList<>(javaQuestionRepository.getAll());
         return arrayQuestions.get(randomIndex);
     }
